@@ -12,6 +12,8 @@ jobs:
       - run: npm ci && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
+          node-version: 18
+          cache: npm        
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NORIAKI_BLOG_9784F }}'
           projectId: noriaki-blog-9784f
