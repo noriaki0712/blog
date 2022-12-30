@@ -11,7 +11,7 @@
 module.exports = {
   graphqlTypegen: true,
   flags: {
-    DEV_SSR: false 
+    DEV_SSR: false,
   },
   siteMetadata: {
     title: `Up Bumboo Blog`,
@@ -22,8 +22,8 @@ module.exports = {
     description: `個人で勉強している技術を投稿する。フロントはjavascript,typescript,react,vue,バックはruby,php,rust,rails,laravelなど。`,
     siteUrl: `https://noriaki-blog-9784f.web.app`,
     social: {
-      twitter: `CoZ26pxgxtXVBSz`,
-      github: `https://github.com/noriaki0712`
+      twitter: `https://twitter.com/CoZ26pxgxtXVBSz`,
+      github: `https://github.com/noriaki0712`,
     },
   },
   plugins: [

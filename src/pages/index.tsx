@@ -1,21 +1,19 @@
 import * as React from "react"
-import { Link, graphql, PageProps  } from "gatsby"
+import { Link, graphql, PageProps } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
 const BlogIndex = (props: PageProps<Queries.BlogIndexQuery>) => {
-  const {data } = props
+  const { data } = props
   const siteTitle = data.site?.siteMetadata?.title || `Title`
   const posts = data.allMdx?.nodes
   if (posts.length === 0) {
     return (
       <Layout site={data.site} title={siteTitle}>
         <Bio />
-        <p>
-          投稿がありません
-        </p>
+        <p>投稿がありません</p>
       </Layout>
     )
   }
@@ -34,7 +32,7 @@ const BlogIndex = (props: PageProps<Queries.BlogIndexQuery>) => {
               >
                 <header>
                   <h2>
-                    <Link to={post.fields?.slug || ''} itemProp="url">
+                    <Link to={post.fields?.slug || ""} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>
@@ -62,7 +60,7 @@ export default BlogIndex
 export const Head = () => <Seo title="記事一覧" />
 
 export const pageQuery = graphql`
-  query BlogIndex{
+  query BlogIndex {
     site {
       siteMetadata {
         title
