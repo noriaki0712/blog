@@ -29,7 +29,7 @@ const Layout = (props: Props) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <Header site={site}/>
+      <Header site={site} />
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with

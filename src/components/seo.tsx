@@ -6,14 +6,14 @@
  */
 
 import * as React from "react"
-import { useStaticQuery, graphql, PageProps} from "gatsby"
+import { useStaticQuery, graphql, PageProps } from "gatsby"
 
 type Props = {
   description?: string
   title?: string
   children?: React.ReactNode
 }
-const Seo = ({ description, title, children }: Props ) => {
+const Seo = ({ description, title, children }: Props) => {
   const { site }: Queries.SeoQuery = useStaticQuery(
     graphql`
       query Seo {
@@ -36,9 +36,9 @@ const Seo = ({ description, title, children }: Props ) => {
   return (
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
-      <meta name="description" content={metaDescription || ''} />
+      <meta name="description" content={metaDescription || ""} />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription || ''} />
+      <meta property="og:description" content={metaDescription || ""} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
       <meta
@@ -46,7 +46,7 @@ const Seo = ({ description, title, children }: Props ) => {
         content={site?.siteMetadata?.social?.twitter || ``}
       />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription || ''} />
+      <meta name="twitter:description" content={metaDescription || ""} />
       {children}
     </>
   )
