@@ -10,12 +10,20 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+    - name: Checkout repo
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+    - name: Use Node.js
+      - run: npm ci 
+      - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm        
+    - name: Firebase deploy
+      - run: npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NORIAKI_BLOG_9784F }}'
           channelId: live
