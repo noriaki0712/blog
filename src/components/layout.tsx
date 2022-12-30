@@ -1,9 +1,16 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import Header from "./header"
 
-const Layout = ({ location, title, children }) => {
+type Props = {
+  site?: Queries.BlogIndexQuery["site"]
+  title?: string
+  children?: React.ReactNode
+}
+const Layout = (props: Props) => {
+  const { site, title, children } = props
   const rootPath = `${__PATH_PREFIX__}/`
-  const isRootPath = location.pathname === rootPath
+  const isRootPath = site?.siteMetadata?.siteUrl === rootPath
   let header
 
   if (isRootPath) {
@@ -22,7 +29,7 @@ const Layout = ({ location, title, children }) => {
 
   return (
     <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
+      <Header site={site}/>
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with

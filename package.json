@@ -10,22 +10,31 @@
   "dependencies": {
     "@fontsource/merriweather": "^4.5.14",
     "@fontsource/montserrat": "^4.5.13",
+    "@mdx-js/mdx": "^1.6.22",
+    "@mdx-js/react": "^2.2.1",
+    "@react-icons/all-files": "^4.1.0",
     "gatsby": "^5.3.3",
     "gatsby-plugin-feed": "^5.3.1",
     "gatsby-plugin-image": "^3.3.2",
     "gatsby-plugin-manifest": "^5.3.1",
+    "gatsby-plugin-mdx": "^5.3.1",
+    "gatsby-plugin-sass": "^6.3.1",
     "gatsby-plugin-sharp": "^5.3.2",
     "gatsby-remark-images": "^7.3.1",
     "gatsby-remark-prismjs": "^7.3.0",
+    "gatsby-remark-prismjs-title": "^1.0.0",
     "gatsby-remark-responsive-iframe": "^6.3.0",
     "gatsby-source-filesystem": "^5.3.1",
-    "gatsby-transformer-remark": "^6.3.2",
     "gatsby-transformer-sharp": "^5.3.1",
+    "node-sass": "^8.0.0",
     "prismjs": "^1.29.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "sharp": "^0.31.3"
   },
   "devDependencies": {
+    "eslint": "^8.30.0",
+    "eslint-plugin-mdx": "^2.0.5",
     "prettier": "^2.8.0"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
@@ -44,6 +53,8 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint": "eslint . --ext md,mdx",
+    "post:new": "git rev-parse --show-toplevel && ./bin/create.sh"
   }
 }

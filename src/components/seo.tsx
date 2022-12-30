@@ -6,12 +6,17 @@
  */
 
 import * as React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, PageProps} from "gatsby"
 
-const Seo = ({ description, title, children }) => {
-  const { site } = useStaticQuery(
+type Props = {
+  description?: string
+  title?: string
+  children?: React.ReactNode
+}
+const Seo = ({ description, title, children }: Props ) => {
+  const { site }: Queries.SeoQuery = useStaticQuery(
     graphql`
-      query {
+      query Seo {
         site {
           siteMetadata {
             title
@@ -25,23 +30,23 @@ const Seo = ({ description, title, children }) => {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || site?.siteMetadata?.description
+  const defaultTitle = site?.siteMetadata?.title
 
   return (
     <>
       <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
-      <meta name="description" content={metaDescription} />
+      <meta name="description" content={metaDescription || ''} />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription} />
+      <meta property="og:description" content={metaDescription || ''} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
       <meta
         name="twitter:creator"
-        content={site.siteMetadata?.social?.twitter || ``}
+        content={site?.siteMetadata?.social?.twitter || ``}
       />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={metaDescription} />
+      <meta name="twitter:description" content={metaDescription || ''} />
       {children}
     </>
   )
