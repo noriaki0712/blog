@@ -2,26 +2,26 @@
 # https://github.com/firebase/firebase-tools
 
 name: Deploy to Firebase Hosting on PR
-'on': pull_request
+on: pull_request
 jobs:
   build_and_preview:
-    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
+    if: "${{ github.event.pull_request.head.repo.full_name == github.repository }}"
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
     - name: Use Node.js
-      - run: npm ci 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: npm        
+      run: npm ci 
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: npm        
     - name: Firebase deploy
-      - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NORIAKI_BLOG_9784F }}'
-          projectId: noriaki-blog-9784f
+      run: npm run build
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NORIAKI_BLOG_9784F }}'
+        projectId: noriaki-blog-9784f
